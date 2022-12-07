@@ -1,0 +1,29 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: spring-batch
+    version: 0.1
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DID_DATABASE_URL:jdbc:postgresql://127.0.0.1:5432/solution}
+    username: ${DID_DATABASE_USER:solution}
+    password: ${DID_DATABASE_PASS:0sRyPSoK7p7i6Ygk1dewaPkRoy3K5Z/+}
+    hikari:
+      schema: spring_batch
+    jpa:
+      hibernate:
+        ddl-auto: ${DID_DATABASE_DDL_AUTO:none}
+        naming:
+          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+      properties:
+        hibernate:
+          default_schema: DID_SOLUTION
+          show_sql: ${HIBERNATE_SQL_COMMENT:true}
+          format_sql: ${HIBERNATE_SQL_COMMENT:true}
+          user_sql_comments: ${HIBERNATE_SQL_COMMENT:true}
+      open-in-view: false
+  batch:
+    job:
+      enabled: false
